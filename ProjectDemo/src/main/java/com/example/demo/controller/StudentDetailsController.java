@@ -34,4 +34,24 @@ public List<StudentDataEntity> getAll(){
 	 } return null;
 }
 
+@PutMapping("/update") public StudentDataEntity updateStudent(@RequestBody
+StudentDataEntity student) {
+
+try { 
+	rep.save(student); 
+	return student; 
+	} 
+  catch(Exception ex){
+ ex.printStackTrace(); 
+ }return student; 
+ }
+ 
+
+  @DeleteMapping("/delete/{id}") public String deleteStudent(@PathVariable int
+ id) {
+ 
+ @SuppressWarnings("deprecation") StudentDataEntity student = rep.getOne(id);
+ rep.delete(student); return "Student deleted"; }
+ 
+
 }
